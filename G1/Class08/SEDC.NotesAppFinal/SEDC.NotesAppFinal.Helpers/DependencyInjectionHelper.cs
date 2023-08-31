@@ -13,17 +13,19 @@
     {
         public static void InjectDbContext(this IServiceCollection services)
         {
-            services.AddDbContext<NotesDbContext>(options => options.UseSqlServer(@"Data Source=(localdb)\LocalTest;Database=NotesAppFinalDb;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"));
+            services.AddDbContext<NotesDbContext>(options => options.UseSqlServer(@"Data Source=(localdb)\LocalDBDemo;Database=NotesAppFinalDb;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"));
         }
 
         public static void InjectRepositories(this IServiceCollection services)
         {
             services.AddTransient<IRepository<Note>, NotesRepository>();
+            services.AddTransient<IRepository<User>, UserRepository>();
         }
 
         public static void InjectServices(this IServiceCollection services)
         {
             services.AddTransient<INotesService, NotesService>();
+            services.AddTransient<IUserService, UserService>();
         }
     }
 }

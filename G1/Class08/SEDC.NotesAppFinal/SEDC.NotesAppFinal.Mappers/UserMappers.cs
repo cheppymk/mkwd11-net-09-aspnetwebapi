@@ -15,5 +15,16 @@ namespace SEDC.NotesAppFinal.Mappers
                 Username = user.Username
             };
         }
+
+        public static User MapToUser(this CreateUserDto userDto)
+        {
+            return new User()
+            {
+                Age = userDto.Age,
+                FirstName = userDto.FirstName,
+                LastName = userDto.LastName,
+                Username = userDto.Username
+            };
+        }
     }
 }
